@@ -14,13 +14,10 @@
 		.then(() => device.claimInterface(0))
 	}
 
-	function print() {
+	async function print() {
 		var string = document.getElementById("printContent").value + "\n";
         console.log(string);
-		var data = new Uint8Array(string.split('').map(char => char.charCodeAt(0)))
-        console.log(data);
-		device.transferOut(1, data)
-		.catch(error => { console.log(error); })
+        await printer.raw(new Uint8Array(Escpos.Printer.encodeSJIS(string)));
 	}
 
 
@@ -31,7 +28,8 @@
             printer = new Escpos.Usb(device);
             await printer.setup();
             // await setup(device);
-            // await print();
+           
+            await print();
             await cut();
         }
         else
