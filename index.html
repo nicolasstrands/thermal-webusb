@@ -17,7 +17,7 @@
 	async function print() {
 		var string = document.getElementById("printContent").value + "\n";
         console.log(string);
-        await printer.raw(new Uint8Array(Escpos.Printer.encodeSJIS(string)));
+        await printer.text(string);
 	}
 
 
