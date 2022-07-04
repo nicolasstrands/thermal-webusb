@@ -5,12 +5,13 @@ if (!window.Escpos) {
 Escpos.Printer = class {
     constructor () {};
     static encodeSJIS (str) {
-        const sjisBuffer = Encoding.convert((new TextEncoder()).encode(str), {
-            from: 'UTF8',
-            to: 'SJIS',
-            type: 'arraybuffer'
-        });
-        return sjisBuffer;
+        // const sjisBuffer = Encoding.convert((new TextEncoder()).encode(str), {
+        //     from: 'UTF8',
+        //     to: 'SJIS',
+        //     type: 'arraybuffer'
+        // });
+        // return sjisBuffer;
+        return str;
     }
     async raw (data) {
         throw new Error('Not implemented');
